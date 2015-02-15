@@ -5,18 +5,32 @@ import argparse
 import re
 import os
 import fnmatch
+import datetime
+
+tag = datetime.datetime.now().strftime("%Y%m%d-%S")
+
 
 parser = argparse.ArgumentParser(prog='mtg-montage', description='Process images for print')
 parser.add_argument('-d', '--directory', default='./', help='the directory where the card images are located')
 parser.add_argument('-i', '--input', default='', required=True, help='input file with card names and quatity')
 parser.add_argument('-o', '--output', default='', required=True, help='output pdf file to store the montage')
 parser.add_argument('-t', '--test', action='store_true', default=False, help='tests to see which images can be found - doesn\'t generate anything')
+parser.add_argument('-s', '--savefile', default='', required=False, help='the filepath where to store the card image choices')
+parser.add_argument('-c', '--choices', default='', required=False, help='load choices from this file')
 args = parser.parse_args()
 
 matches = []
 unmatched = []
+choices = []
 
 input_lines = [line.strip() for line in open(args.input)]
+
+# if the user imported choices add them to a list
+if args.choices != '':
+	choices_loaded = []
+	for line in open(args.choices):
+		choices_loaded.append(tuple(line.strip().split(',')))
+	choices_loaded = dict(choices_loaded)
 
 for line in input_lines:
 
@@ -42,15 +56,23 @@ for line in input_lines:
 				if args.test:
 					continue;
 
-				# if there are more than one match, the user has to choose
-				choice = 0
-				if len(pre_matches) > 1:
-					print 'Found more than one match for', line[1]
-					for i, val in enumerate(pre_matches):
-						print '  ' + repr(i) + '. ' + val
-					choice = raw_input('  Which file would you like to use? (enter the number): ')
+				# make the user chooce which file has the right card
+				if args.choices != '':
+					choice = choices_loaded[line[1]]
 					choice = int(choice)
-				
+				else:
+					choice = 0
+					if len(pre_matches) > 1:
+						print 'Found more than one match for', line[1]
+						for i, val in enumerate(pre_matches):
+							print '  ' + repr(i) + '. ' + val
+						choice = raw_input('  Which file would you like to use? (enter the number): ')
+						choice = int(choice)
+
+				# if the save flag is set, save the user's choice
+				if args.savefile != '':
+					choices.append(line[1] + ',' + str(choice))
+
 				# add the match from pre_matches to the main match list a number of times
 				for _ in range(int(line[0])):
 					matches.append(pre_matches[choice])
@@ -66,6 +88,13 @@ if not args.test:
 	print 'Building the pdf. This may take a while...'
 	os.system(command)
 
+# if the save choices flag is set, write the choices to a file
+if args.savefile != '':
+	f = open(args.savefile, 'w')
+	for item in choices:
+ 		print >> f, item
+
+# print some statistics
 print ''
 print 'Statistics'
 print '-------------------------------------------'
