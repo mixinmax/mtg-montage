@@ -10,6 +10,7 @@ parser = argparse.ArgumentParser(prog='mtg-montage', description='Process images
 parser.add_argument('-d', '--directory', default='./', help='the directory where the card images are located')
 parser.add_argument('-i', '--input', default='', required=True, help='input file with card names and quatity')
 parser.add_argument('-o', '--output', default='', required=True, help='output pdf file to store the montage')
+parser.add_argument('-t', '--test', action='store_true', default=False, help='tests to see which images can be found - doesn\'t generate anything')
 args = parser.parse_args()
 
 matches = []
@@ -28,7 +29,7 @@ for line in input_lines:
 			# find images in directory which match the name of the card
 			pre_matches = []
 			for root, dirnames, filenames in os.walk(args.directory):
-				for filename in fnmatch.filter(filenames, line[1]+'*'):
+				for filename in fnmatch.filter(filenames, '*'+line[1]+'*'):
 					pre_matches.append(os.path.join(root, filename))
 
 			if len(pre_matches) == 0:
@@ -36,6 +37,11 @@ for line in input_lines:
 				print 'Couldn\'t find a match for', line[1]
 			else:
 				print 'Matched', line[1]
+
+				# if the --test flag is set, don't ask for input
+				if args.test:
+					continue;
+
 				# if there are more than one match, the user has to choose
 				choice = 0
 				if len(pre_matches) > 1:
@@ -50,15 +56,15 @@ for line in input_lines:
 					matches.append(pre_matches[choice])
 
 # build the montage command based on the images in matches[]
-command = 'montage '
-for img in matches:
-	command = command + '"' + img + '" '
-command = command + '-geometry 744x1039 -density 300 -tile 3x3 '
-command = command + args.output
-
-print ''
-print 'Building the pdf. This may take a while...'
-os.system(command)
+if not args.test:
+	command = 'montage '
+	for img in matches:
+		command = command + '"' + img + '" '
+	command = command + '-geometry 744x1039 -density 300 -tile 3x3 '
+	command = command + args.output
+	print ''
+	print 'Building the pdf. This may take a while...'
+	os.system(command)
 
 print ''
 print 'Statistics'
