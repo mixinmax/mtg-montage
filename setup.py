@@ -9,7 +9,7 @@ setup(
 	license = 'LICENSE.txt',
 	keywords = 'montage imagemagick magic mtg proxy',
 	url = 'https://github.com/maxmackie/mtg-montage',
-	long_description=open('README.md').read(),
+	long_description=open('README.txt').read(),
 	scripts = [
 		'bin/mtg-montage'
 	]
