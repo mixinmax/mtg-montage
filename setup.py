@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
 	name = 'mtg-montage',
-	version = '0.1.1',
+	version = '0.1.2',
 	description = 'Creates proxy pages from Magic: The Gathering cards ready for printing',
 	author = 'Max Mackie',
 	author_email = 'mtg-montage@f33r.com',
