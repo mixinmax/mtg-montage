@@ -1,0 +1,11 @@
+360cube.txt
+CHANGES.txt
+LICENSE.txt
+MANIFEST.in
+setup.py
+bin/mtg-montage
+docs/help.txt
+mtg_montage.egg-info/PKG-INFO
+mtg_montage.egg-info/SOURCES.txt
+mtg_montage.egg-info/dependency_links.txt
+mtg_montage.egg-info/top_level.txt

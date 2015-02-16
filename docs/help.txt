@@ -1,0 +1,19 @@
+usage: mtg-montage [-h] [-d DIRECTORY] -i INPUT -o OUTPUT [-t] [-s SAVEFILE]
+                   [-c CHOICES]
+
+Process images for print
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DIRECTORY, --directory DIRECTORY
+                        the directory where the card images are located
+  -i INPUT, --input INPUT
+                        input file with card names and quatity
+  -o OUTPUT, --output OUTPUT
+                        output pdf file to store the montage
+  -t, --test            tests to see which images can be found - doesn't
+                        generate anything
+  -s SAVEFILE, --savefile SAVEFILE
+                        the filepath where to store the card image choices
+  -c CHOICES, --choices CHOICES
+                        load choices from this file
