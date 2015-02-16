@@ -1,2 +1,6 @@
 # OS stuff
-DS
+.DS_Store
+
+# Python package stuff
+build/
+mtg_montage.egg-info/
