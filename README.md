@@ -13,6 +13,7 @@ Dependencies
 ------------
 
   - `imagemagick` and `montage`: [Installation Instructions](http://www.imagemagick.org/script/binary-releases.php)
+	- High Quality MTG Card Scans: [CCGH Releases](http://www.slightlymagic.net/forum/viewforum.php?f=15&sid=d0990f90b80adda9df59504a87d1f88f)
 
 Examples
 --------
