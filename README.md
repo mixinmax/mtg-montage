@@ -9,6 +9,13 @@ can be printed and the cards will be the same size as a real magic card.
 Disclaimer: This software is to be used for personal proxies only. If you
 enjoy playing the game, buy the cards.
 
+Screenshots
+-----------
+
+![card list](https://raw.githubusercontent.com/maxmackie/mtg-montage/gh-pages/img/text.png)
+
+![output pdf](https://raw.githubusercontent.com/maxmackie/mtg-montage/gh-pages/img/cards.png)
+
 Dependencies
 ------------
 
