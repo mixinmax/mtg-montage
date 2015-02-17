@@ -12,7 +12,7 @@ enjoy playing the game, buy the cards.
 Dependencies
 ------------
 
-  - `imagemagick` and `montage`: (Installation Instructions)[http://www.imagemagick.org/script/binary-releases.php]
+  - `imagemagick` and `montage`: [Installation Instructions](http://www.imagemagick.org/script/binary-releases.php)
 
 Examples
 --------
@@ -27,16 +27,16 @@ text. Below are some common usage examples.
 
 1. Standard usage
 
-    mtg-montage --directory ~/mtg-images/ --input ~/cubelist.txt --output ~/cubelist.pdf
+  `mtg-montage --directory ~/mtg-images/ --input ~/cubelist.txt --output ~/cubelist.pdf`
 
 2. Save the card choices you make
 
-    mtg-montage --directory ~/mtg-images/ --input ~/cubelist.txt --output ~/cubelist.pdf --savefile ~/choices.txt
+  `mtg-montage --directory ~/mtg-images/ --input ~/cubelist.txt --output ~/cubelist.pdf --savefile ~/choices.txt`
 
 3. Load a past set of choices to regenerate the pdf
 
-    mtg-montage --directory ~/mtg-images/ --input ~/cubelist.txt --output ~/cubelist.pdf --choices ~/choices.txt
+  `mtg-montage --directory ~/mtg-images/ --input ~/cubelist.txt --output ~/cubelist.pdf --choices ~/choices.txt`
 
 4. Run a test, don't actually make the pdf. This is useful if you want to see which cards the program can't find
 
-    mtg-montage --directory ~/mtg-images/ --input ~/cubelist.txt --output ~/cubelist.pdf --test
+  `mtg-montage --directory ~/mtg-images/ --input ~/cubelist.txt --output ~/cubelist.pdf --test`
