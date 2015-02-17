@@ -9,6 +9,11 @@ can be printed and the cards will be the same size as a real magic card.
 Disclaimer: This software is to be used for personal proxies only. If you
 enjoy playing the game, buy the cards.
 
+Installation
+------------
+
+  - For OSX and Linux users, run `sudo pip install mtg-montage` or download the script `bin/mtg-montage` and put it on your system
+
 Screenshots
 -----------
 
